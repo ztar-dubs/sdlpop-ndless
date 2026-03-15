@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prince of Persia pour TI-Nspire CX - SDLPoP-Ndless</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; background: #fafafa; }
+  h1 { color: #8B4513; border-bottom: 2px solid #8B4513; padding-bottom: 10px; }
+  h2 { color: #A0522D; margin-top: 30px; }
+  table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+  th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+  th { background: #8B4513; color: white; }
+  tr:nth-child(even) { background: #f2f2f2; }
+  code { background: #e8e8e8; padding: 2px 6px; border-radius: 3px; font-size: 0.95em; }
+  .tree { background: #f5f5f5; border: 1px solid #ddd; padding: 15px; border-radius: 5px; font-family: monospace; white-space: pre; }
+  .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px 15px; margin: 15px 0; border-radius: 3px; }
+  a { color: #8B4513; }
+</style>
+</head>
+<body>
+
+<h1>Prince of Persia pour TI-Nspire CX</h1>
+<p>SDLPoP-Ndless &mdash; Portage de Prince of Persia (1989) pour les calculatrices TI-Nspire CX.</p>
+
+<h2>Installation</h2>
+
+<h3>Configuration requise</h3>
+<ul>
+  <li>Calculatrice TI-Nspire CX, CX CAS, CX II ou CX II CAS</li>
+  <li><a href="https://ndless.me/">Ndless</a> install&eacute; sur la calculatrice</li>
+  <li>Fichiers de donn&eacute;es du jeu original Prince of Persia DOS (fichiers <code>.DAT</code>)</li>
+</ul>
+
+<h3>Arborescence des fichiers</h3>
+<p>Copiez les fichiers suivants sur votre calculatrice. L'ex&eacute;cutable et le dossier <code>data/</code> doivent &ecirc;tre dans le <strong>m&ecirc;me r&eacute;pertoire</strong>.</p>
+
+<div class="tree">
+votre_dossier/
+|-- prince.tns              (ex&eacute;cutable du jeu)
++-- data/
+    |-- CDUNGEON.DAT.tns
+    |-- CPALACE.DAT.tns
+    |-- EDUNGEON.DAT.tns
+    |-- EPALACE.DAT.tns
+    |-- FAT.DAT.tns
+    |-- GUARD.DAT.tns
+    |-- GUARD1.DAT.tns
+    |-- GUARD2.DAT.tns
+    |-- KID.DAT.tns
+    |-- LEVELS.DAT.tns
+    |-- PRINCE.DAT.tns
+    |-- PV.DAT.tns
+    |-- SHADOW.DAT.tns
+    |-- SKEL.DAT.tns
+    |-- TITLE.DAT.tns
+    |-- VDUNGEON.DAT.tns
+    |-- VIZIER.DAT.tns
+    +-- VPALACE.DAT.tns
+</div>
+
+<div class="note">
+  <strong>Note :</strong> Les fichiers audio (<code>DIGISND*.DAT</code>, <code>IBM_SND*.DAT</code>, <code>MIDISND*.DAT</code>) ne sont pas n&eacute;cessaires &mdash; le son n'est pas support&eacute; sur la Nspire.
+</div>
+
+<h3>Lancer le jeu</h3>
+<p>Ouvrez l'explorateur de fichiers de votre calculatrice, naviguez vers le dossier contenant <code>prince.tns</code> et lancez-le.</p>
+
+<h2>Touches du jeu</h2>
+
+<table>
+  <tr><th>Touche Nspire</th><th>Action</th></tr>
+  <tr><td><strong>Fl&egrave;ches</strong> ou <strong>2 / 4 / 6 / 8</strong></td><td>D&eacute;placement</td></tr>
+  <tr><td><strong>Ctrl</strong></td><td>Action : agripper, marche prudente, boire potion, d&eacute;gainer, attaquer, parer</td></tr>
+  <tr><td><strong>Tab</strong> ou <strong>7</strong></td><td>Saut haut-gauche</td></tr>
+  <tr><td><strong>Shift</strong> ou <strong>9</strong></td><td>Saut haut-droite</td></tr>
+  <tr><td><strong>Enter</strong></td><td>Confirmer / D&eacute;marrer la partie</td></tr>
+  <tr><td><strong>Esc</strong></td><td>Quitter le jeu</td></tr>
+  <tr><td><strong>Space</strong></td><td>Passer le texte / les cin&eacute;matiques</td></tr>
+  <tr><td><strong>R</strong></td><td>Red&eacute;marrer le niveau</td></tr>
+  <tr><td><strong>Menu</strong></td><td>Basculer l'affichage : 320x200 (centr&eacute;) / 320x240 (plein &eacute;cran)</td></tr>
+</table>
+
+<h3>Conseils de jeu</h3>
+<ul>
+  <li><strong>Courir :</strong> Maintenir la fl&egrave;che gauche ou droite</li>
+  <li><strong>Saut en courant :</strong> Pendant la course, appuyer sur haut</li>
+  <li><strong>Saut sur place :</strong> Appuyer sur haut &agrave; l'arr&ecirc;t</li>
+  <li><strong>S'accroupir :</strong> Appuyer sur bas</li>
+  <li><strong>Marche prudente :</strong> Maintenir Ctrl + appuyer sur une direction</li>
+  <li><strong>Agripper un rebord :</strong> Maintenir Ctrl en tombant pr&egrave;s d'un rebord</li>
+  <li><strong>Grimper :</strong> Maintenir Ctrl en suspension, puis appuyer sur haut</li>
+  <li><strong>Combat :</strong> Ctrl pour attaquer, Ctrl pour parer quand l'ennemi frappe</li>
+</ul>
+
+<h2>&Agrave; propos de ce portage</h2>
+
+<h3>Projet open source</h3>
+<p>Ce portage est bas&eacute; sur <strong>SDLPoP</strong> (SDL Prince of Persia), un portage open source du jeu classique DOS Prince of Persia (1989) de Jordan Mechner.</p>
+
+<table>
+  <tr><th>Projet</th><th>D&eacute;tails</th></tr>
+  <tr><td>Jeu original</td><td>Prince of Persia (1989) par Jordan Mechner</td></tr>
+  <tr><td>Base open source</td><td><a href="https://github.com/NagyD/SDLPoP">SDLPoP</a> par David Nagy</td></tr>
+  <tr><td>Version SDLPoP</td><td>v1.24 RC</td></tr>
+  <tr><td>SDK calculatrice</td><td><a href="https://github.com/ndless-nspire/Ndless">Ndless SDK</a> avec nSDL (SDL 1.2)</td></tr>
+  <tr><td>Licence</td><td>GNU General Public License v3.0</td></tr>
+</table>
+
+<h3>Code source</h3>
+<p>Le code source de ce portage Nspire est disponible ici :<br>
+<a href="https://github.com/ztar-dubs/sdlpop-ndless.git">https://github.com/ztar-dubs/sdlpop-ndless.git</a></p>
+
+<h3>Probl&egrave;mes connus</h3>
+<ul>
+  <li>Pas de son (la Nspire n'a pas de haut-parleur)</li>
+  <li>Bref clignottement de couleurs lors des transitions d'&eacute;cran (cin&eacute;matiques, &eacute;cran titre). Le gameplay n'est pas affect&eacute;.</li>
+</ul>
+
+</body>
+</html>
