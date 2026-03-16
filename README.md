@@ -7,27 +7,16 @@ Based on SDLPoP v1.24 RC.
 ## Requirements
 
 ### To build
+
 - [Ndless SDK](https://github.com/ndless-nspire/Ndless) with nspire-gcc toolchain
 - nSDL (SDL 1.2 for Ndless)
 - Make
 
 ### To run
+
 - TI-Nspire CX, CX CAS, CX II, or CX II CAS calculator
 - [Ndless](https://ndless.me/) installed on the calculator
 - Original Prince of Persia DOS game data files (`.DAT` files)
-
-## Building
-
-```bash
-bash build.sh        # Compile the project
-bash build.sh clean  # Clean object files
-```
-
-The build produces `prod/prince.tns` (the executable) and copies game data files to `prod/data/`.
-
-### Build requirements
-
-The `build.sh` script expects the Ndless SDK to be installed at `/c/cygwin/ndless-sdk/`. Edit the `PATH` line in `build.sh` if your SDK is in a different location.
 
 ## Installation on calculator
 
@@ -45,17 +34,17 @@ The `.DAT` files are from the original DOS Prince of Persia game. They are **not
 
 ## Controls
 
-| Nspire Key | Action |
-|---|---|
-| **Arrows** or **2/4/6/8** | Movement |
-| **Ctrl** | Shift (grab / careful step / fight) |
-| **Tab** or **7** | Jump up+left |
-| **Shift** or **9** | Jump up+right |
-| **Enter** | Confirm / Start game |
-| **Esc** | Quit game |
-| **Space** | Skip text / cutscene |
-| **R** | Restart level |
-| **Menu** | Toggle 320x200 / 320x240 display |
+| Nspire Key                | Action                              |
+| ------------------------- | ----------------------------------- |
+| **Arrows** or **2/4/6/8** | Movement                            |
+| **Ctrl**                  | Shift (grab / careful step / fight) |
+| **Tab** or **7**          | Jump up+left                        |
+| **Shift** or **9**        | Jump up+right                       |
+| **Enter**                 | Confirm / Start game                |
+| **Esc**                   | Quit game                           |
+| **Space**                 | Skip text / cutscene                |
+| **R**                     | Restart level                       |
+| **Menu**                  | Toggle 320x200 / 320x240 display    |
 
 ### Gameplay controls
 
@@ -74,7 +63,6 @@ The `.DAT` files are from the original DOS Prince of Persia game. They are **not
 ```
 sdlpop-ndless/
 |-- Makefile              # Build system for Ndless
-|-- build.sh              # Build wrapper (sets PATH for toolchain)
 |-- src/                  # SDLPoP original source (modified with #ifdef NSPIRE)
 |   |-- main.c            # Entry point (chdir to exe dir on Nspire)
 |   |-- config.h          # Feature flags (audio, menu, replay etc. disabled)
