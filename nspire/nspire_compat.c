@@ -78,10 +78,9 @@ void nspire_set_gr_mode(byte grmode) {
 
 void nspire_update_screen(void) {
     if (nspire_screen == NULL || onscreen_surface_ == NULL) return;
-    if (nspire_block_update) return;
 
     if (nspire_stretch_mode) {
-        /* 320x240 stretched: stretch 200→240 lines in RAM */
+        /* 320x240 stretched */
         SDL_LockSurface(onscreen_surface_);
         SDL_LockSurface(nspire_screen);
         Uint8* src = (Uint8*)onscreen_surface_->pixels;
@@ -94,11 +93,11 @@ void nspire_update_screen(void) {
         SDL_UnlockSurface(nspire_screen);
         SDL_UnlockSurface(onscreen_surface_);
     } else {
-        /* 320x200 centered with 20px black borders */
+        /* 320x200 centered */
         SDL_Rect dst_rect = {0, 20, 320, 200};
         SDL_BlitSurface(onscreen_surface_, NULL, nspire_screen, &dst_rect);
     }
-    lcd_blit(nspire_screen->pixels, SCR_320x240_565);
+    SDL_Flip(nspire_screen);
 }
 
 /* ---- Input ---- */

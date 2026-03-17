@@ -210,7 +210,7 @@ typedef long long Sint64;
 /* Note: the existing code uses SDL_TRUE as the flag, which is 1.
    SDL_SRCCOLORKEY in SDL 1.2 is typically 0x00001000. We need a wrapper. */
 static inline int SDL2_SetColorKey(SDL_Surface *surface, int flag, Uint32 key) {
-    if (flag) return SDL_SetColorKey(surface, SDL_SRCCOLORKEY, key);
+    if (flag) return SDL_SetColorKey(surface, SDL_SRCCOLORKEY | SDL_RLEACCEL, key);
     else return SDL_SetColorKey(surface, 0, key);
 }
 /* Override SDL_SetColorKey to use our wrapper */

@@ -588,23 +588,21 @@ enum sound_type {
 	sound_digi_converted = 6,
 };
 
-#ifndef NSPIRE
 #pragma pack(push,1)
-#endif
 
-typedef PACKED_STRUCT(note_type) {
+typedef struct note_type {
 	word frequency; // 0x00 or 0x01 = rest, 0x12 = end
 	byte length;
 } note_type;
 SDL_COMPILE_TIME_ASSERT(note_type, sizeof(note_type) == 3);
 
-typedef PACKED_STRUCT(speaker_type) { // IBM
+typedef struct speaker_type { // IBM
 	word tempo;
 	note_type notes[];
 } speaker_type;
 SDL_COMPILE_TIME_ASSERT(speaker_type, sizeof(speaker_type) == 2);
 
-typedef PACKED_STRUCT(digi_type) { // wave in 1.0 and 1.1
+typedef struct digi_type { // wave in 1.0 and 1.1
 	word sample_rate;
 	word sample_count;
 	word unknown;
@@ -613,7 +611,7 @@ typedef PACKED_STRUCT(digi_type) { // wave in 1.0 and 1.1
 } digi_type;
 SDL_COMPILE_TIME_ASSERT(digi_type, sizeof(digi_type) == 7);
 
-typedef PACKED_STRUCT(digi_new_type) { // wave in 1.3 and 1.4 (and PoP2)
+typedef struct digi_new_type { // wave in 1.3 and 1.4 (and PoP2)
 	word sample_rate;
 	byte sample_size; // =8
 	word sample_count;
@@ -623,7 +621,7 @@ typedef PACKED_STRUCT(digi_new_type) { // wave in 1.3 and 1.4 (and PoP2)
 } digi_new_type;
 SDL_COMPILE_TIME_ASSERT(digi_new_type, sizeof(digi_new_type) == 9);
 
-typedef PACKED_STRUCT(midi_type) {
+typedef struct midi_type {
 	char chunk_type[4];
 	dword chunk_length;
 	union {
@@ -637,19 +635,19 @@ typedef PACKED_STRUCT(midi_type) {
 	};
 } midi_type;
 
-typedef PACKED_STRUCT(ogg_type) {
+typedef struct ogg_type {
 	//byte sample_size; // =16
 	int total_length;
 	byte* file_contents;
 	stb_vorbis* decoder;
 } ogg_type;
 
-typedef PACKED_STRUCT(converted_audio_type) {
+typedef struct converted_audio_type {
 	int length;
 	short * samples; //FIXME: crash in PSP when using flexible arrays (??)
 } converted_audio_type;
 
-typedef PACKED_STRUCT(sound_buffer_type) {
+typedef struct sound_buffer_type {
 	byte type;
 	union {
 		speaker_type speaker;
@@ -662,7 +660,7 @@ typedef PACKED_STRUCT(sound_buffer_type) {
 } sound_buffer_type;
 
 
-typedef PACKED_STRUCT(midi_raw_chunk_type) {
+typedef struct midi_raw_chunk_type {
 	char chunk_type[4];
 	dword chunk_length;
 	union {
@@ -676,9 +674,7 @@ typedef PACKED_STRUCT(midi_raw_chunk_type) {
 	};
 } midi_raw_chunk_type;
 
-#ifndef NSPIRE
 #pragma pack(pop)
-#endif
 
 typedef struct midi_event_type {
 	dword delta_time;
@@ -716,11 +712,9 @@ typedef struct parsed_midi_type {
 	dword ticks_per_beat;
 } parsed_midi_type;
 
-#ifndef NSPIRE
 #pragma pack(push, 1)
-#endif
 
-typedef PACKED_STRUCT(operator_type) {
+typedef struct operator_type {
 	byte mul;
 	byte ksl_tl;
 	byte a_d;
@@ -729,7 +723,7 @@ typedef PACKED_STRUCT(operator_type) {
 } operator_type;
 SDL_COMPILE_TIME_ASSERT(operator_type, sizeof(operator_type) == 5);
 
-typedef PACKED_STRUCT(instrument_type) {
+typedef struct instrument_type {
 	byte blocknum_low;
 	byte blocknum_high;
 	byte FB_conn;
@@ -739,9 +733,7 @@ typedef PACKED_STRUCT(instrument_type) {
 } instrument_type;
 SDL_COMPILE_TIME_ASSERT(instrument_type, sizeof(instrument_type) == 16);
 
-#ifndef NSPIRE
 #pragma pack(pop)
-#endif
 
 struct dialog_type; // (declaration only)
 typedef struct dialog_settings_type {
@@ -1448,11 +1440,7 @@ typedef struct custom_options_type {
 
 typedef struct directory_listing_type directory_listing_type;
 
-#ifdef NSPIRE
-#define BASE_FPS 30
-#else
 #define BASE_FPS 60
-#endif
 
 #define FEATHER_FALL_LENGTH 18.75
 

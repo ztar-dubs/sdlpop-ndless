@@ -38,8 +38,10 @@ The `.DAT` files are from the original DOS Prince of Persia game. They are **not
 | ------------------------- | ----------------------------------- |
 | **Arrows** or **2/4/6/8** | Movement                            |
 | **Ctrl**                  | Shift (grab / careful step / fight) |
-| **Tab** or **7**          | Jump up+left                        |
-| **Shift** or **9**        | Jump up+right                       |
+| **7**                     | Jump up+left                        |
+| **9**                     | Jump up+right                       |
+| **Tab**                   | Quick save                          |
+| **Del**                   | Quick load                          |
 | **Enter**                 | Confirm / Start game                |
 | **Esc**                   | Quit game                           |
 | **Space**                 | Skip text / cutscene                |

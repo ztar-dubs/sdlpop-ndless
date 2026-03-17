@@ -921,11 +921,7 @@ image_type* decode_image(image_data_type* image_data, dat_pal_type* palette) {
 #ifndef NSPIRE
 	colors[0].a = SDL_ALPHA_TRANSPARENT;
 #endif
-#ifdef NSPIRE
-	SDL_SetColors(image, colors, 0, 16); /* SDL 1.2: update surface palette + blit map */
-#else
 	SDL_SetPaletteColors(image->format->palette, colors, 0, 16); // SDL_SetColors = deprecated
-#endif
 
 #ifdef NSPIRE
 	/* On Nspire, keep images as 8-bit paletted surfaces.
@@ -3474,35 +3470,33 @@ image_type* method_6_blit_img_to_scr(image_type* image,int xpos,int ypos,int bli
 	}
 #endif
 
+#ifdef NSPIRE
+	/* On Nspire, all images are loaded from DAT as paletted (indexed) */
+	if (blit == blitters_0_no_transp) {
+		SDL_SetColorKey(image, SDL_FALSE, 0);
+	} else {
+		SDL_SetColorKey(image, SDL_TRUE, 0);
+	}
+#else
 	SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_NONE);
 	SDL_SetColorKey(image, SDL_FALSE, 0);
 	SDL_SetSurfaceAlphaMod(image, 255);
 
-	//printf("format = %s\n", SDL_GetPixelFormatName(image->format->format));
-	// Fix the background color of teleport images on SDL_image 2.6.2, where they are loaded as RGBA.
-	// For transparency, paletted images need colorkeying, RGB(A) images need blending.
 	if (blit == blitters_0_no_transp) {
-#ifdef NSPIRE
-		SDL_SetColorKey(image, SDL_FALSE, 0);
-#else
 		if (SDL_ISPIXELFORMAT_INDEXED(image->format->format)) {
 			SDL_SetColorKey(image, SDL_FALSE, 0);
 		} else {
 			SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_NONE);
 		}
-#endif
 	}
 	else {
-#ifdef NSPIRE
-		SDL_SetColorKey(image, SDL_TRUE, 0);
-#else
 		if (SDL_ISPIXELFORMAT_INDEXED(image->format->format)) {
 			SDL_SetColorKey(image, SDL_TRUE, 0);
 		} else {
 			SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_BLEND);
 		}
-#endif
 	}
+#endif
 	if (SDL_BlitSurface(image, &src_rect, current_target_surface, &dest_rect) != 0) {
 		sdlperror("method_6_blit_img_to_scr: SDL_BlitSurface 2247");
 		//quit(1);
@@ -4395,14 +4389,10 @@ void set_chtab_palette(chtab_type* chtab, byte* colors, int n_colors) {
 					if (current_palette->ncolors < n_colors_to_be_set) {
 						n_colors_to_be_set = current_palette->ncolors;
 					}
-#ifdef NSPIRE
-					SDL_SetColors(current_image, scolors, 0, n_colors_to_be_set);
-#else
-					if (SDL_SetPaletteColors(current_palette, scolors, 0, n_colors_to_be_set) != 0) {
+				if (SDL_SetPaletteColors(current_palette, scolors, 0, n_colors_to_be_set) != 0) {
 						sdlperror("set_chtab_palette: SDL_SetPaletteColors");
 						quit(1);
 					}
-#endif
 				}
 			}
 		}

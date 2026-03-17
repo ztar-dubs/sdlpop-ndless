@@ -2350,11 +2350,7 @@ void load_title_images(int bgcolor) {
 #endif
 		}
 		if (NULL != chtab_title40) {
-#ifdef NSPIRE
-			SDL_SetColors(chtab_title40->images[0], &color, 14, 1);
-#else
 			SDL_SetPaletteColors(chtab_title40->images[0]->format->palette, &color, 14, 1);
-#endif
 		}
 	} else if (graphics_mode == gmEga || graphics_mode == gmTga) {
 		// ...

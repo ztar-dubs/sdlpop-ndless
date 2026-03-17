@@ -34,7 +34,6 @@ LDFLAGS = -Wl,--gc-sections \
           -Wl,--wrap=open \
           -Wl,--wrap=stat \
           -Wl,--wrap=clock \
-          -Wl,--wrap=access \
           -Os -marm -mno-unaligned-access
 
 LIBS    = -lSDL -lz -lm
