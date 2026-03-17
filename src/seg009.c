@@ -87,17 +87,28 @@ void find_exe_dir(void) {
 #if ! (defined WIN32 || _WIN32 || WIN64 || _WIN64)
 void find_home_dir(void) {
 	if (found_home_dir) return;
+#ifdef NSPIRE
+	/* getenv("HOME") returns garbage on Nspire - don't use it */
+	home_dir[0] = '\0';
+#else
 	const char* home_path = getenv("HOME");
-	snprintf_check(home_dir, POP_MAX_PATH - 1, "%s/.%s", home_path, POP_DIR_NAME);
-	if(file_exists(home_dir))
-		found_home_dir = true;
+	if (home_path != NULL) {
+		snprintf_check(home_dir, POP_MAX_PATH - 1, "%s/.%s", home_path, POP_DIR_NAME);
+		if(file_exists(home_dir))
+			found_home_dir = true;
+	}
+#endif
 }
 
 void find_share_dir(void) {
 	if (found_share_dir) return;
+#ifdef NSPIRE
+	share_dir[0] = '\0';
+#else
 	snprintf_check(share_dir, POP_MAX_PATH - 1, "%s/%s", SHARE_PATH, POP_DIR_NAME);
 	if(file_exists(share_dir))
 		found_share_dir = true;
+#endif
 }
 #endif
 

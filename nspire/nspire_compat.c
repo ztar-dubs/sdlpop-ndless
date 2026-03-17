@@ -141,11 +141,17 @@ void nspire_poll_input(void) {
      * Mapped to CTRL on nspire keypad */
     UPDATE_KEY(KEY_NSPIRE_CTRL, SDL_SCANCODE_RSHIFT);
 
-    /* Nspire Tab or 7 → jump up+left (Home) */
-    UPDATE_KEY2(KEY_NSPIRE_TAB, KEY_NSPIRE_7, SDL_SCANCODE_HOME);
+    /* 7 → jump up+left (Home) */
+    UPDATE_KEY(KEY_NSPIRE_7, SDL_SCANCODE_HOME);
 
-    /* Nspire Shift or 9 → jump up+right (PageUp) */
-    UPDATE_KEY2(KEY_NSPIRE_SHIFT, KEY_NSPIRE_9, SDL_SCANCODE_PAGEUP);
+    /* 9 → jump up+right (PageUp) */
+    UPDATE_KEY(KEY_NSPIRE_9, SDL_SCANCODE_PAGEUP);
+
+    /* Tab → quick save (F6) */
+    UPDATE_KEY(KEY_NSPIRE_TAB, SDL_SCANCODE_F6);
+
+    /* Del → quick load (F9) */
+    UPDATE_KEY(KEY_NSPIRE_DEL, SDL_SCANCODE_F9);
 
     /* Enter → confirm */
     UPDATE_KEY(KEY_NSPIRE_ENTER, SDL_SCANCODE_RETURN);

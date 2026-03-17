@@ -34,7 +34,7 @@ The authors of this program may be contacted at https://forum.princed.org
 #undef USE_COPYPROT
 #undef USE_FLASH
 #undef USE_ALPHA
-#undef USE_QUICKSAVE
+// USE_QUICKSAVE kept enabled for Nspire (Tab=save, Del=load)
 #undef USE_QUICKLOAD_PENALTY
 #undef USE_REPLAY
 #undef USE_LIGHTING

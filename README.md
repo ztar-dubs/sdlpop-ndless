@@ -59,6 +59,10 @@ The `.DAT` files are from the original DOS Prince of Persia game. They are **not
 - **Drink potion**: Ctrl in front of potion
 - **Draw sword / Attack**: Ctrl (when enemy is near)
 - **Parry**: Ctrl (when enemy attacks)
+- **Quick save**: Tab (saves position, level, time, HP)
+- **Quick load**: Del (restores saved state, reloads level sprites)
+
+The quick save file (`QUICKSAVE.SAV.tns`) is stored next to the executable. Quick loading works across game sessions - you can save, quit, restart the game and load your saved position.
 
 ## Project Structure
 

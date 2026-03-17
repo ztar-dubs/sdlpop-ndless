@@ -2500,6 +2500,12 @@ void show_splash() {
 }
 
 const char* get_writable_file_path(char* custom_path_buffer, size_t max_len, const char* file_name) {
+#ifdef NSPIRE
+	/* On Nspire: save directly in the current directory (next to the executable).
+	 * getenv("HOME") returns garbage on Nspire and causes mkdir with bad paths. */
+	(void)custom_path_buffer; (void)max_len;
+	return file_name;
+#endif
 	// If the SDLPOP_SAVE_PATH environment variable is set, put all saves into the directory it points to.
 	// Otherwise, save to the home directory
 #if defined WIN32 || _WIN32 || WIN64 || _WIN64
