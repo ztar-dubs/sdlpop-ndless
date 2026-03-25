@@ -4400,10 +4400,17 @@ void set_chtab_palette(chtab_type* chtab, byte* colors, int n_colors) {
 					if (current_palette->ncolors < n_colors_to_be_set) {
 						n_colors_to_be_set = current_palette->ncolors;
 					}
-				if (SDL_SetPaletteColors(current_palette, scolors, 0, n_colors_to_be_set) != 0) {
+#ifdef NSPIRE
+					/* Use SDL_SetColors to invalidate blit map - needed for
+					 * guard color changes to take effect on 8-bit→16-bit blits.
+					 * This is called rarely (room/guard change), not per-frame. */
+					SDL_SetColors(current_image, scolors, 0, n_colors_to_be_set);
+#else
+					if (SDL_SetPaletteColors(current_palette, scolors, 0, n_colors_to_be_set) != 0) {
 						sdlperror("set_chtab_palette: SDL_SetPaletteColors");
 						quit(1);
 					}
+#endif
 				}
 			}
 		}
